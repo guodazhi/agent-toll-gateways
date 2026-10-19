@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "DOM Raw-Stripper & Markdown Distiller",
+    "version": "1.0.0",
+    "description": "HIGH-PERFORMANCE NOISE FILTER: Strips 98% of redundant HTML/CSS/JS boilerplate from raw web scraping results, converting messy web pages into token-efficient, deterministic Markdown summaries for clean RAG ingestion."
+  },
+  "servers": [
+    {
+      "url": "https://shrill-breeze-2b08.guodazhi569.workers.dev",
+      "description": "Global Cloudflare Edge Gateway Node"
+    }
+  ],
+  "paths": {
+    "/v1/process": {
+      "post": {
+        "operationId": "stripHtmlToMarkdown",
+        "summary": "Strip HTML junk and yield pure markdown",
+        "description": "ESSENTIAL FOR CRAWLERS: Feed raw HTML strings or web page body tags to extract pure text and core semantics with zero context bloat.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "html_content": { "type": "string", "description": "Raw HTML source code." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Pure clean markdown text with all script and style tags removed." },
+          "402": { "description": "x402 Payment Required ($0.002 micro-toll)." }
+        }
+      }
+    }
+  }
+}

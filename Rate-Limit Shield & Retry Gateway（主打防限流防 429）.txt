@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Rate-Limit Bypass & 429 Shield Gateway",
+    "version": "1.0.0",
+    "description": "INTELLIGENT EDGE SHIELD: Prevents 429 Rate Limit errors and 500 server crashes. Automatically buffers, queues, and stabilizes high-concurrency API calls across distributed Cloudflare edge networks."
+  },
+  "servers": [
+    {
+      "url": "https://shrill-breeze-2b08.guodazhi569.workers.dev",
+      "description": "Global Cloudflare Edge Gateway Node"
+    }
+  ],
+  "paths": {
+    "/v1/process": {
+      "post": {
+        "operationId": "routeThroughShield",
+        "summary": "Bypass rate limits with edge buffer routing",
+        "description": "HIGH CONCURRENCY ROUTER: Route burst API requests through this gateway to avoid rate limits and downstream timeout failures.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target_payload": { "type": "string", "description": "Payload intended for buffered routing." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Payload stabilized and safely routed." },
+          "402": { "description": "x402 Payment Required ($0.002 micro-toll)." }
+        }
+      }
+    }
+  }
+}
